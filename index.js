@@ -1,16 +1,15 @@
-const inquirer = require('inquirer');
-const mySQL = require('mysql2');
+const inquirer = require("inquirer");
+const mysql = require("mysql2");
 //const { table } = require('console');
 
-require('dotenv').config();
+require("dotenv").config();
 //db.query = utils.promisify(db.query);
 
-const db = mySQL.createConnection({
-    host: '127.0.0.1',
-    port: 3000,
-    user: 'root',
-    password: '',
-    database: 'employee_cataloger',
+const db = mysql.createConnection({
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  password: process.env.DB_PASS,
+  database: process.env.DB_DB
 });
 
 function viewAllDepartments() {
@@ -138,10 +137,10 @@ async function prompts() {
             );
         };
         addRole();
-    } else if (departments.directory === "View all Roles") {
+    } else if (dept.directory === "View all Roles") {
         const roles = await viewAllRoles();
         console.table(roles);
-    } else if (departments.directory === "Add a new Employee") {
+    } else if (dept.directory === "Add a new Employee") {
         const viewRoles = await viewAllRoles();
         const newEmployee = await inquirer.prompt([
             {
@@ -195,10 +194,10 @@ async function prompts() {
             );
         };
         addEmployee();
-    } else if (departments.directory === "View all Employees") {
+    } else if (dept.directory === "View all Employees") {
         const employees = await viewAllEmployees();
         console.table(employees);
-    } else if (departments.directory === "Update an employee's Role") {
+    } else if (dept.directory === "Update an employee's Role") {
         const viewRoles = await viewAllRoles();
         const viewEmployees = await viewAllEmployees();
         const updatePrompt = await inquirer.prompt([
