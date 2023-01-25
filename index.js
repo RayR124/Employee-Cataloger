@@ -6,33 +6,27 @@ require("dotenv").config();
 //db.query = utils.promisify(db.query);
 
 const db = mysql.createConnection({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  password: process.env.DB_PASS,
-  database: process.env.DB_DB
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DB
 });
 
 function viewAllDepartments() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM department", function (err, result) {
-            resolve(result);
-        });
+        db.query("SELECT * FROM department", function (err, result) { resolve(result) });
     });
 };
 
 function viewAllRoles() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM role", function (err, result) {
-            resolve(result);
-        });
+        db.query("SELECT * FROM role", function (err, result) { resolve(result) });
     });
 };
 
 function viewAllEmployees() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM employee", function (err, result) {
-            resolve(result);
-        });
+        db.query("SELECT * FROM employee", function (err, result) { resolve(result) });
     });
 };
 
