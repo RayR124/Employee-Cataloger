@@ -1,36 +1,38 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-//const { table } = require('console');
+const db = require(".");
+require("console.table");
 
 require("dotenv").config();
 //db.query = utils.promisify(db.query);
 
-const db = mysql.createConnection({
+const connection = mysql.createConnection({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
     password: process.env.DB_PASS,
     database: process.env.DB_DB
 });
 
 function viewAllDepartments() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM department", function (err, result) { resolve(result) });
+        connection.query("SELECT * FROM department", function (err, result) { resolve(result) });
     });
 };
 
 function viewAllRoles() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM role", function (err, result) { resolve(result) });
+        connection.query("SELECT * FROM role", function (err, result) { resolve(result) });
     });
 };
 
 function viewAllEmployees() {
     return new Promise(function (resolve, reject) {
-        db.query("SELECT * FROM employee", function (err, result) { resolve(result) });
+        connection.query("SELECT * FROM employee", function (err, result) { resolve(result) });
     });
 };
 
-async function prompts() {
+async function questions() {
     const dept = await inquirer.prompt([
         {
             type: "list",
@@ -237,7 +239,8 @@ async function prompts() {
             );
         };
         updateEmployee();
-    } prompts();
+    };
+    questions();
 };
 
-prompts();
+questions();
