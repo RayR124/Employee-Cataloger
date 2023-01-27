@@ -1,24 +1,24 @@
 {
     "dependencies": {
-      "console.table": "^0.10.0",
-      "inquirer": "^8.1.2",
-      "mysql": "^2.18.1",
-      "mysql2": "^2.3.3"
+        "console.table": "^0.10.0",
+        "dotenv": "^16.0.3",
+        "inquirer": "^8.1.2",
+        "mysql": "^2.18.1",
+        "mysql2": "^2.3.3"
     },
     "name": "employee-tracker",
     "description": "Employee Tracker app",
     "version": "1.0.0",
     "main": "index.js",
-    "devDependencies": {},
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/RayR124/Employee-Cataloger"
+        "type": "git",
+        "url": "git+https://github.com/RayR124/Employee-Cataloger"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "homepage": "https://github.com/RayR124/Employee-Cataloger/blob/main/README.md"
-  }
+}

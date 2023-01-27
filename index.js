@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const db = require(".");
-require("console.table");
+//require("console.table");
 
 require("dotenv").config();
 //db.query = utils.promisify(db.query);
@@ -49,6 +49,7 @@ async function questions() {
             ],
         },
     ]);
+    console.log(dept);
     if (dept.directory === "Add a new Department") {
         const deptPrompt = await inquirer.prompt([
             {
@@ -243,4 +244,7 @@ async function questions() {
     questions();
 };
 
-questions();
+questions().catch((error) => {
+    console.error(error).then(console.log("something")
+    )
+});
