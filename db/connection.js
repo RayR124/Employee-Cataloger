@@ -14,9 +14,4 @@ connection.connect((error) => {
   console.log('Connection established sucessfully!');
 });
 
-connection.query("SELECT * FROM employee", (err, results) => {
-    if(err) throw err
-    console.table(results)
-})
-
 module.exports = connection;
