@@ -5,6 +5,8 @@ A system for storing, cataloging, adding, and deleting eomployee personnel from 
 
 This is an app built in back-end using zero starter code that allows users to manipulate a stored database in which they can add or edit employees into given stations or "roles."
 
+![mmscreenshot](./assets/ECScreenshot.png)
+
 ## Table of Contents
 
 - [Installation](#installation)
@@ -16,11 +18,11 @@ This is an app built in back-end using zero starter code that allows users to ma
 
 ## Installation
 
-This does not require installation, simply visit the URL (add url here) or visit my GitHub Repository at https://github.com/RayR124?tab=repositories.
+This does not require installation, simply visit the URL https://github.com/RayR124/Employee-Cataloger and clone my reposotory or visit my GitHub Repository at https://github.com/RayR124?tab=repositories to view my other projects.
 
 ## Usage
 
-Just be sure to have node on your system, clone the repo, open an integrated terminal in BASH, then run "node index.js" and follow the prompts on the screen!
+Just be sure to have node on your system, clone the repo, (be sure to change your user: and password: information in the connection.js file to match your mySQL login info) open an integrated terminal in BASH, then run "node index.js" and follow the prompts on the screen!
 
 ## License
 
