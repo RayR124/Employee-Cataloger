@@ -1,0 +1,2 @@
+Application deployed at Heroku (or equivalent) and loads with no errors: deployed, loads with a typeerror “cannot read properties of null”
+

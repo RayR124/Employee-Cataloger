@@ -1,18 +1,8 @@
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
-const db = require(".");
-//require("console.table");
-
+const connection = require("./db/connection");
+console.log(connection)
 require("dotenv").config();
-//db.query = utils.promisify(db.query);
-
-const connection = mysql.createConnection({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    password: process.env.DB_PASS,
-    database: process.env.DB_DB
-});
 
 function viewAllDepartments() {
     return new Promise(function (resolve, reject) {
@@ -48,7 +38,7 @@ async function questions() {
                 "Update an employee's Role",
             ],
         },
-    ]);
+    ])
     console.log(dept);
     if (dept.directory === "Add a new Department") {
         const deptPrompt = await inquirer.prompt([
@@ -67,7 +57,7 @@ async function questions() {
         ]);
         console.log(deptPrompt);
         function addDept() {
-            db.query(
+            connection.query(
                 "INSERT INTO department (department_name) VALUES (?)",
                 deptPrompt.department_name,
                 function (error) {
@@ -124,7 +114,7 @@ async function questions() {
             },
         ]);
         function addRole() {
-            db.query(
+            connection.query(
                 "INSERT INTO role (department_id,title,salary) VALUES (?,?,?)",
                 [newRole.department, newRole.title, newRole.salary],
                 function (error) {
@@ -181,7 +171,7 @@ async function questions() {
             },
         ]);
         function addEmployee() {
-            db.query(
+            connection.query(
                 "INSERT INTO employee (role_id,first_name,last_name) VALUES (?,?,?)",
                 [newEmployee.role, newEmployee.first_name, newEmployee.last_name],
                 function (error) {
@@ -230,7 +220,7 @@ async function questions() {
             },
         ]);
         function updateEmployee() {
-            db.query(
+            connection.query(
                 "UPDATE employee SET role_id =(?) WHERE id = (?)",
                 [updatePrompt.roles, updatePrompt.employees],
                 function (error) {
@@ -244,7 +234,4 @@ async function questions() {
     questions();
 };
 
-questions().catch((error) => {
-    console.error(error).then(console.log("something")
-    )
-});
+questions();
